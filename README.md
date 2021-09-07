@@ -18,7 +18,8 @@ override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) 
   }
   val uri = data?.data ?: return
   //关键是这里，这个就是保存这个目录的访问权限
-  contentResolver.takePersistableUriPermission(uri, data.flags and (Intent.FLAG_GRANT_READ_URI_PERMISSION or Intent.FLAG_GRANT_WRITE_URI_PERMISSION)) 
+  contentResolver.takePersistableUriPermission(uri, data.flags 
+      and (Intent.FLAG_GRANT_READ_URI_PERMISSION or Intent.FLAG_GRANT_WRITE_URI_PERMISSION)) 
   listDocumentFiles(DocumentFile.fromTreeUri(this, uri))
 }
 ~~~
